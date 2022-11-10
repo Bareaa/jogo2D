@@ -22,7 +22,7 @@ jogador = pygame.transform.scale(jogador, (100, 130))
 
 pygame.mixer.music.load("assets/lo-fi.wav")
 pygame.mixer.music.play(-1) #looping infinito (-1)
-pygame.mixer.music.set_volume(0.35)
+pygame.mixer.music.set_volume(0.3)
 
 
 
@@ -58,7 +58,12 @@ def jogar():
     
     morte = pygame.mixer.Sound("assets/morte.mp3")
     morte.set_volume(1)
-    
+    # batida = pygame.mixer.Sound("assets/batida.wav")
+    # batida.set_volume(0.8)
+    queda = pygame.mixer.Sound("assets/queda.wav")
+    queda.set_volume(0.1)
+
+
     while True:
         for event in gameEvents.get():
             if event.type == pygame.QUIT:
@@ -79,6 +84,7 @@ def jogar():
                 posicaobigornaY = -240
                 posicaobigornaX = random.randint(0,largura)
                 velocidadebigorna = velocidadebigorna + 1
+                pygame.mixer.Sound.play(queda)
                 pontos = pontos + 1
                 
                 
@@ -90,7 +96,6 @@ def jogar():
             gameDisplay.fill(branco)
             gameDisplay.blit(fundo,(0,0))
             gameDisplay.blit(jogador, (ironX,ironY))
-            
             gameDisplay.blit(bigorna, (posicaobigornaX,posicaobigornaY))
             # escreverTexto("Pontos: "+str(pontos))
 
@@ -107,7 +112,8 @@ def jogar():
                 if colisaoX > 39:
                     morreu()
                     jogando=False
-                    pygame.mixer.music.stop()
+                    # pygame.mixer.Sound.play(batida)
+                    pygame.mixer.music.stop()                 
                     pygame.mixer.Sound.play(morte)
 
 
@@ -115,4 +121,3 @@ def jogar():
         clock.tick(60)
 
 jogar()
-
