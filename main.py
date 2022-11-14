@@ -68,19 +68,19 @@ def jogar():
     pirulitoX = 300
     larguraPirulito = 30
     alturaPirulito = 50
-    velocidadePirulito = 7
+    velocidadePirulito = 5
 
     todyY = -180
     todyX = 200
     larguraTody = 30
     alturaTody = 50
-    velocidadeTody = 7
+    velocidadeTody = 3
 
     sopaY = -230
     sopaX = 100
     larguraSopa = 30
     alturaSopa = 50
-    velocidadeSopa = 7
+    velocidadeSopa = 4
     
     pontos = 0
     
@@ -106,7 +106,7 @@ def jogar():
                     jogar()
             elif event.type == pygame.KEYUP:
                 movimentojogadorX = 0
-            
+        
         if jogando:
             if posicaobigornaY > altura:
                 posicaobigornaY = -240
@@ -170,7 +170,7 @@ def jogar():
             if colisaoY > 0:
                 colisaoX = len(list(set(pixelXbigorna) & set(pixelsXjogador) ))
                 print(colisaoX)
-                if colisaoX > 39:
+                if colisaoX > 23:
                     morreu()
                     jogando=False
                     # pygame.mixer.Sound.play(batida)
@@ -184,8 +184,9 @@ def jogar():
             if coletaYP > 0:
                 coletaXP = len(list(set(pixelXpirulito) & set (pixelsXjogador)))
                 print (coletaXP)
-                if coletaXP > 39:
-                    pontos += 1
+                if coletaXP >= 30:
+                    pontos = pontos + 1
+                    pirulitoY = -150
             
             pixelXsopa = list(range(sopaX, sopaX+larguraSopa))
             pixelYsopa = list(range(sopaY, sopaY+alturaSopa))
@@ -194,8 +195,9 @@ def jogar():
             if coletaYS > 0:
                 coletaXS = len(list(set(pixelXsopa) & set (pixelsXjogador)))
                 print (coletaXS)
-                if coletaXS > 39:
-                    pontos += 1
+                if coletaXS >= 30:
+                    pontos = (pontos + 1)
+                    sopaY = -230
 
             pixelXtody = list(range(todyX, todyX+larguraTody))
             pixelYtody = list(range(todyY, todyY+alturaTody))
@@ -204,8 +206,10 @@ def jogar():
             if coletaYT > 0:
                 coletaXT = len(list(set(pixelXtody) & set (pixelsXjogador)))
                 print (coletaXT)
-                if coletaYT > 39:
-                    pontos += 1
+                if coletaXT >= 30:
+                    pontos = pontos + 1
+                    todyY = -180
+                         
         escreverTexto("Pontos: "+str(pontos))
 #########################################################################################################################                    
         pygameDisplay.update()
