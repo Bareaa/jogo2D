@@ -7,7 +7,7 @@ lerNomeEmail()
 
 pygame.init()
 pygameDisplay = pygame.display
-pygameDisplay.set_caption("teste de jogo")
+pygameDisplay.set_caption("Catch The Food")
 altura = 612
 largura = 453
 tamanho = (largura, altura)
