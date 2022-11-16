@@ -1,6 +1,14 @@
 import pygame
 import random
 import time
+
+nome = input("Digite seu nome: ")
+email = input("Digite seu e-mail: ")
+
+historico = open('historico.txt','a')
+historico.write(f'Nome: {nome} e-mail: {email}')
+historico.close()
+
 pygame.init()
 pygameDisplay = pygame.display
 pygameDisplay.set_caption("teste de jogo")
@@ -117,7 +125,7 @@ def jogar():
                 
                 
             else:
-                posicaobigornaY =posicaobigornaY + velocidadebigorna
+                posicaobigornaY = posicaobigornaY + velocidadebigorna
 
         if jogando:
             if pirulitoY > altura:
