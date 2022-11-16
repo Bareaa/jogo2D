@@ -1,13 +1,9 @@
 import pygame
 import random
 import time
+from arquivos import lerNomeEmail
 
-nome = input("Digite seu nome: ")
-email = input("Digite seu e-mail: ")
-
-historico = open('historico.txt','a')
-historico.write(f'Nome: {nome} e-mail: {email}')
-historico.close()
+lerNomeEmail()
 
 pygame.init()
 pygameDisplay = pygame.display
@@ -121,7 +117,6 @@ def jogar():
                 posicaobigornaX = random.randint(0,largura)
                 velocidadebigorna = velocidadebigorna + 1
                 pygame.mixer.Sound.play(queda)
-                # pontos = pontos + 1
                 
                 
             else:
@@ -133,7 +128,7 @@ def jogar():
                 pirulitoX = random.randint(0,largura)
                 velocidadePirulito = velocidadePirulito 
                 pygame.mixer.Sound.play(queda)
-                # pontos = pontos + 1
+
             else:
                 pirulitoY =pirulitoY + velocidadePirulito
 
@@ -143,7 +138,7 @@ def jogar():
                 todyX = random.randint(0,largura)
                 velocidadeTody = velocidadeTody 
                 pygame.mixer.Sound.play(queda)
-                # pontos = pontos + 1        
+
             else:
                 todyY =todyY + velocidadeTody
                 
@@ -152,8 +147,7 @@ def jogar():
                 sopaY = -240
                 sopaX = random.randint(0,largura)
                 velocidadeSopa = velocidadeSopa 
-                pygame.mixer.Sound.play(queda)
-                # pontos = pontos + 1        
+                pygame.mixer.Sound.play(queda)      
             else:
                 sopaY =sopaY + velocidadeSopa
 
@@ -177,7 +171,6 @@ def jogar():
             colisaoY = len(list(set(pixelYbigorna) & set(pixelsYjogador) ))
             if colisaoY > 0:
                 colisaoX = len(list(set(pixelXbigorna) & set(pixelsXjogador) ))
-                print(colisaoX)
                 if colisaoX > 23:
                     morreu()
                     jogando=False
@@ -191,7 +184,6 @@ def jogar():
             coletaYP = len(list(set(pixelYpirulito)& set(pixelsYjogador)))
             if coletaYP > 0:
                 coletaXP = len(list(set(pixelXpirulito) & set (pixelsXjogador)))
-                print (coletaXP)
                 if coletaXP >= 30:
                     pontos = pontos + 1
                     pirulitoY = -150
@@ -202,7 +194,6 @@ def jogar():
             coletaYS = len(list(set(pixelYsopa)& set(pixelsYjogador)))
             if coletaYS > 0:
                 coletaXS = len(list(set(pixelXsopa) & set (pixelsXjogador)))
-                print (coletaXS)
                 if coletaXS >= 30:
                     pontos = (pontos + 1)
                     sopaY = -230
@@ -213,7 +204,7 @@ def jogar():
             coletaYT = len(list(set(pixelYtody)& set(pixelsYjogador)))
             if coletaYT > 0:
                 coletaXT = len(list(set(pixelXtody) & set (pixelsXjogador)))
-                print (coletaXT)
+                #print (coletaXT)
                 if coletaXT >= 30:
                     pontos = pontos + 1
                     todyY = -180
