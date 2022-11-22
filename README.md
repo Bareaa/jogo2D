@@ -7,3 +7,6 @@ Criadores:
 Jogo:
 Clarencio estava organizando um cartaz para a apresentação de um trabalho na sua escola, mas acabou errando os nomes e teve que fazer um esforço redobrado para corrigir!
 Ajude ele a se alimentar direito para que não fique estressado e sim mais "fortinho"
+
+Link do jogo:
+https://drive.google.com/drive/folders/1Dn2zX83TFgIZUR4P-Ix6cTn4laOVBcQY
